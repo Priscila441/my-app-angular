@@ -1,0 +1,26 @@
+<div class="mb-4">
+    <input type="text" pInputText [(ngModel)]="searchTerm" placeholder="Buscar por nombre, email o ciudad" class="w-full p-2" />
+  </div>
+  
+  <p-table [value]="filteredUsers"
+  [paginator]="true"
+  [rows]="5"
+  [rowsPerPageOptions]="[5,10,20]"
+  [globalFilterFields]="['name', 'email', 'address.city']"
+  [filterDelay]="300">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Ciudad</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.address.city }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  
